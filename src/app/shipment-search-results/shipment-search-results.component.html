@@ -1,0 +1,61 @@
+<div class="wrapper bg-light">
+    <app-navbar />
+    <div class="container-fluid bg-light p-5">
+        <div class="container-sm bg-white shadow pt-3">
+            <div class="d-flex justify-content-between p-2 border-bottom">
+                <div class="d-flex gap-2 ">
+                    <a (click)="navigateToHome()" style="cursor: pointer;"><i
+                            class="fa-solid fa-angle-left d-block mt-2 text-center text-primary"
+                            style="font-size: 20px;"></i></a>
+                    <div class="line-divider mx-2 my-1"></div>
+                    <h3>Shipment search results</h3>
+                </div>
+                <div>
+                    <button class="btn btn-outline-primary px-4 rounded-0" (click)="navigateToHome()">Close</button>
+                </div>
+            </div>
+            <div>
+                <div class="d-flex justify-content-between mt-3">
+                    <h4>{{totalData}} <small class="text-muted" style="font-size: 14px;">results</small></h4>
+                    <i class="fa-solid fa-filter me-3" style="font-size: 20px;"></i>
+                </div>
+                <div class="py-3">
+                    <div *ngFor="let shipment of filteredData"
+                        class="card rounded-0 border-top-0 border-end-0 border-start-0">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-around text-muted card-margin  flex-wrap">
+                                <div>
+                                    <p class="lead fw-semibold mb-0">{{shipment.OrderNo}}</p>
+                                    <p class="mb-0">{{shipment.ShipmentLines.TotalNumberOfRecords}} products</p>
+                                    <p class="mb-0">Carrier: {{shipment.ScacAndService}}</p>
+                                    <p class="mb-0">Shipment # <a (click)="navigateToShipmentSummary(shipment.OrderNo)"
+                                            class="text-primary link-underline"
+                                            style="cursor: pointer;">{{shipment.ShipmentNo}}</a>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p [ngClass]="{
+                                    'text-success': shipment.Status === 'In Transit', 
+                                    'text-danger': shipment.Status === 'Cancelled', 
+                                    'text-warning': shipment.Status === 'Ready for Backroom Pick'
+                                  }" class="fw-semibold mb-0">{{shipment.Status}}</p>
+                                    <p class="mb-0">Assigned to: {{shipment.AssignedToUserId}}</p>
+                                    <p class="mb-0">Expected pickup date: {{ shipment.ExpectedShipmentDate }}</p>
+                                </div>
+                                <div>
+                                    <p class="fw-semibold mb-0">Customer info</p>
+                                    <p class="mb-0">{{shipment.BillToAddress.FirstName}}</p>
+                                    <p class="mb-0" style="max-width: 150px; min-width: 150px;">
+                                        {{shipment.BillToAddress.DayPhone}}</p>
+                                    <p class="mb-0" style="max-width: 150px; min-width: 150px;">
+                                        {{shipment.BillToAddress.EMailID}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

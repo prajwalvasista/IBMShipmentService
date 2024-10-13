@@ -1,0 +1,40 @@
+<app-navbar />
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-light">
+    <h2 class="mt-5">What do you want to do?</h2>
+    <div class="form-container col-md-6 col-12 shadow p-3 mb-5 mt-3 bg-white rounded-0">
+        <div>
+            <h3 class="text-center mb-5">Shipment search</h3>
+            <form class="d-flex flex-column gap-3 mb-5" [formGroup]="searchForm">
+                <div class="form-group shadow-sm">
+                    <input type="text" class="form-control rounded-0" id="orderNumber" aria-describedby="orderNumber"
+                        placeholder="Order #" formControlName="orderNumber">
+                </div>
+                <div class="form-group shadow-sm">
+                    <input type="text" class="form-control rounded-0" id="shipmentNumber" placeholder="Shipment #"
+                        formControlName="shipmentNumber">
+                </div>
+                <div class="form-group shadow-sm">
+                    <input type="text" class="form-control rounded-0" id="fName" placeholder="First Name"
+                        formControlName="fName">
+                </div>
+                <div class="form-group shadow-sm">
+                    <input type="text" class="form-control rounded-0" id="lName" placeholder="Last Name"
+                        formControlName="lName">
+                </div>
+                <div class="form-group shadow-sm">
+                    <input type="email" class="form-control rounded-0" id="emailId" aria-describedby="email"
+                        placeholder="Email ID" formControlName="emailId">
+                </div>
+                <div class="form-group shadow-sm">
+                    <input type="text" class="form-control rounded-0" id="phoneNumber" placeholder="Phone Number"
+                        formControlName="phoneNumber">
+                </div>
+                <div class="d-flex gap-1 justify-content-end">
+                    <button type="reset" class="buttons btn btn-outline-primary px-3 rounded-0">Reset</button>
+                    <button class="btn btn-primary px-3 rounded-0" (click)="submitForm()">Search</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
